@@ -1,0 +1,21 @@
+name,speed_limit,has_signal
+Orchard Road,50,True
+PIE Expressway,90,False
+Marina Bay Area,40,True
+HDB Estate Road,30,False
+Changi Coastal Road,70,False
+Bukit Timah Road,60,True
+Simei Avenue,50,True
+Jurong West Avenue 1,40,False
+Tuas Industrial Road,50,False
+Sentosa Gateway,40,True
+Nicoll Highway,60,True
+Kranji Expressway,90,False
+Boon Lay Way,50,True
+Upper Thomson Road,60,True
+Serangoon Avenue,40,True
+East Coast Parkway,90,False
+Dover Avenue,40,False
+HarbourFront Avenue,50,True
+Bras Basah Road,50,True
+Farrer Road,60,True
