@@ -1,4 +1,5 @@
 import csv
+import random
 
 # Load locations from CSV
 def load_locations(file_path):
@@ -7,19 +8,22 @@ def load_locations(file_path):
         reader = csv.DictReader(file)
         for row in reader:
             locations.append({
-                "id": row["id"],
                 "name": row["name"].lower(),  # Convert to lowercase for case-insensitive matching
                 "speed_limit": int(row["speed_limit"]),
                 "has_signal": row["has_signal"].lower() == "true"
             })
     return locations
 
+# Display 5 random example locations
+def display_random_locations(locations):
+    print("\nExample Locations:")
+    random_locations = random.sample(locations, min(5, len(locations)))
+    for loc in random_locations:
+        print(f"{loc['name'].title()} (Speed Limit: {loc['speed_limit']} km/h, Signal: {loc['has_signal']})")
+
 # Prompt user for vehicle data
 def get_vehicle_data(locations):
-    print("Available Locations:")
-    for loc in locations:
-        print(f"{loc['name'].title()} (Speed Limit: {loc['speed_limit']} km/h, Signal: {loc['has_signal']})")
-    
+
     location_name = input("\nEnter location name: ").strip().lower()
     location = next((loc for loc in locations if loc["name"] == location_name), None)
 
@@ -58,7 +62,10 @@ def main():
     locations = load_locations("./data/q2-location.csv")
     print("Traffic Rule Violation Detection System")
 
+    display_random_locations(locations)  # Show example locations
+
     while True:
+        example_locations = display_random_locations(locations)
         vehicle = get_vehicle_data(locations)
         violations = validate_vehicle_input(vehicle)
         print("\nViolations Detected:")
@@ -73,3 +80,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
