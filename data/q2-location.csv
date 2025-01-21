@@ -1,0 +1,11 @@
+id,name,speed_limit,has_signal
+A,Orchard Road,50,True
+B,PIE Expressway,90,False
+C,Marina Bay Area,40,True
+D,HDB Estate Road,30,False
+E,Changi Coastal Road,70,False
+F,Bukit Timah Road,60,True
+G,Simei Avenue,50,True
+H,Jurong West Avenue 1,40,False
+I,Tuas Industrial Road,50,False
+J,Sentosa Gateway,40,True
