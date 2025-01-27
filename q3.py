@@ -116,14 +116,28 @@ def query_and_visualize():
     plt.grid(axis="y", linestyle="--", alpha=0.7)
     plt.show()
 
+query_and_visualize()
+
+def draw_bayesian_network(model):
     G = nx.DiGraph() 
-    for edge in model.edges():
-        G.add_edge(edge[0], edge[1])
+    G.add_edges_from(model.edges()) 
 
     pos = nx.spring_layout(G) 
     plt.figure(figsize=(10, 8))
-    nx.draw(G, pos, with_labels=True, node_size=2000, node_color="skyblue", font_size=12, font_weight='bold', edge_color="gray")
-    plt.title("Bayesian Network Structure")
+    nx.draw(
+        G,
+        pos,
+        with_labels=True,
+        node_size=2000,
+        node_color="skyblue",
+        font_size=12,
+        font_weight='bold',
+        edge_color="gray",
+        arrows=True,  
+        arrowsize=20,  
+    )
+    plt.title("Bayesian Network Structure", fontsize=14)
     plt.show()
 
-query_and_visualize()
+draw_bayesian_network(model)
+
