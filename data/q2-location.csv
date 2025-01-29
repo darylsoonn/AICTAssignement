@@ -1,21 +1,21 @@
-name,speed_limit,has_signal
-Orchard Road,50,True
-PIE Expressway,90,False
-Marina Bay Area,40,True
-HDB Estate Road,30,False
-Changi Coastal Road,70,False
-Bukit Timah Road,60,True
-Simei Avenue,50,True
-Jurong West Avenue 1,40,False
-Tuas Industrial Road,50,False
-Sentosa Gateway,40,True
-Nicoll Highway,60,True
-Kranji Expressway,90,False
-Boon Lay Way,50,True
-Upper Thomson Road,60,True
-Serangoon Avenue,40,True
-East Coast Parkway,90,False
-Dover Avenue,40,False
-HarbourFront Avenue,50,True
-Bras Basah Road,50,True
-Farrer Road,60,True
+name,speed_limit,has_signal,no_parking_zone,heavy_vehicle_left_lane,no_overtaking_zone
+Orchard Road,50,True,False,True,False
+PIE Expressway,90,False,False,True,False
+Marina Bay Area,40,True,True,False,True
+HDB Estate Road,30,False,True,False,False
+Changi Coastal Road,70,False,False,True,True
+Bukit Timah Road,60,True,False,False,False
+Simei Avenue,50,True,True,True,True
+Jurong West Avenue 1,40,False,False,True,False
+Tuas Industrial Road,50,False,False,True,False
+Sentosa Gateway,40,True,True,False,True
+Nicoll Highway,60,True,False,False,True
+Kranji Expressway,90,False,False,True,False
+Boon Lay Way,50,True,False,False,False
+Upper Thomson Road,60,True,False,False,True
+Serangoon Avenue,40,True,True,False,False
+East Coast Parkway,90,False,False,True,True
+Dover Avenue,40,False,False,False,False
+HarbourFront Avenue,50,True,False,False,False
+Bras Basah Road,50,True,True,False,False
+Farrer Road,60,True,False,False,False
