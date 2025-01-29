@@ -10,7 +10,10 @@ def load_locations(file_path):
             locations.append({
                 "name": row["name"].lower(),  # Convert to lowercase for case-insensitive matching
                 "speed_limit": int(row["speed_limit"]),
-                "has_signal": row["has_signal"].lower() == "true"
+                "has_signal": row["has_signal"].lower() == "true",
+                "no_parking_zone": row.get("no_parking_zone", "false").lower() == "true",
+                "heavy_vehicle_left_lane": row.get("heavy_vehicle_left_lane", "false").lower() == "true",
+                "no_overtaking_zone": row.get("no_overtaking_zone", "false").lower() == "true"
             })
     return locations
 
@@ -36,10 +39,15 @@ def get_vehicle_data(locations):
     if location["has_signal"]:
         signal_status = input("Enter signal status (red/green): ").strip().lower()
 
+    vehicle_type = input("Enter vehicle type (car/heavy): ").strip().lower()
+    parked = input("Is the vehicle parked? (yes/no): ").strip().lower() == "yes"
+
     return {
         "location": location,
         "speed": speed,
-        "signal_status": signal_status
+        "signal_status": signal_status,
+        "vehicle_type": vehicle_type,
+        "parked": parked
     }
 
 # Validate vehicle data
@@ -54,6 +62,18 @@ def validate_vehicle_input(vehicle):
     # Rule 2: Signal violation
     if location["has_signal"] and vehicle["signal_status"] == "red" and vehicle["speed"] > 0:
         violations.append(f"Red light violation at {location['name'].title()}.")
+
+    # Rule 3: Lane discipline for heavy vehicles
+    if location["heavy_vehicle_left_lane"] and vehicle["vehicle_type"] == "heavy" and vehicle["speed"] > 0:
+        violations.append(f"Lane discipline violation: Heavy vehicles must keep to the left lane at {location['name'].title()}.")
+
+    # Rule 4: Overtaking in no-overtaking zones
+    if location["no_overtaking_zone"] and vehicle["speed"] > 0:
+        violations.append(f"Overtaking violation: No overtaking allowed at {location['name'].title()}.")
+
+    # Rule 5: Parking violations
+    if location["no_parking_zone"] and vehicle["parked"]:
+        violations.append(f"Parking violation: Parking is not allowed at {location['name'].title()}.")
 
     return violations
 
@@ -80,4 +100,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
